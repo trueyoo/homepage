@@ -25,6 +25,9 @@
   .hero-img { transition: transform .4s ease; }
   .hero-img-frame:hover .hero-img { transform: scale(1.04); }
 
+  .stat-card { transition: transform .25s ease, box-shadow .25s ease; }
+  .stat-card:hover { transform: translateY(-3px); box-shadow:0 1px 2px rgba(27,58,92,.06), 0 16px 32px rgba(27,58,92,.12); }
+
   #nzp-ig-track::-webkit-scrollbar { display: none; }
   .nzp-ig-card {
     flex: 0 0 calc((100% - 16px * 5) / 6);
@@ -91,28 +94,26 @@
     </div>
   </section>
 
-  <!-- NAV (sticky on scroll) -->
-  <header style="position:sticky; top:0; z-index:20; background:rgba(245,240,232,.88); backdrop-filter:blur(10px); border-bottom:1px solid rgba(27,58,92,.10);">
-    <div style="max-width:1180px; margin:0 auto; padding:15px 40px; display:flex; align-items:center; justify-content:space-between;">
-      <img src="assets/brand/%EB%84%88%EC%A6%90%ED%8D%BC%EC%A6%90_2%EC%A4%84_%EC%BB%AC%EB%9F%AC.png" alt="Nuzzle Puzzle 너즐퍼즐" style="height:46px; width:auto; display:block;">
-      <nav style="display:flex; align-items:center; gap:34px;">
-        <a href="#brand" class="nav-link" style="font:500 15px 'Pretendard',sans-serif; color:#3f4a55; text-decoration:none;">브랜드</a>
-        <a href="#products" class="nav-link" style="font:500 15px 'Pretendard',sans-serif; color:#3f4a55; text-decoration:none;">제품</a>
-        <a href="#partnership" class="nav-link" style="font:500 15px 'Pretendard',sans-serif; color:#3f4a55; text-decoration:none;">파트너십</a>
-        <a href="#contact" class="nav-cta" style="display:inline-flex; align-items:center; background:#006935; color:#fff; font:600 14px 'Pretendard',sans-serif; padding:11px 22px; border-radius:50px; text-decoration:none;">파트너십 문의</a>
-      </nav>
-    </div>
-  </header>
-
   <!-- HERO STATS + PRODUCT VIDEO -->
   <section style="max-width:1180px; margin:0 auto; padding:64px 40px 80px; display:flex; gap:56px; align-items:center;">
     <div style="flex:1.05;">
-      <div style="display:flex; gap:30px;">
-        <div><div style="font:700 26px 'Pretendard',sans-serif; color:#006935;">3</div><div style="font:500 13px 'Pretendard',sans-serif; color:#8a8170; margin-top:2px;">핵심 제품 카테고리</div></div>
-        <div style="width:1px; background:rgba(27,58,92,.12);"></div>
-        <div><div style="font:700 26px 'Pretendard',sans-serif; color:#006935;">5</div><div style="font:500 13px 'Pretendard',sans-serif; color:#8a8170; margin-top:2px;">전문 공급 채널</div></div>
-        <div style="width:1px; background:rgba(27,58,92,.12);"></div>
-        <div><div style="font:700 26px 'Pretendard',sans-serif; color:#006935;">24<span style="font-size:15px;">h</span></div><div style="font:500 13px 'Pretendard',sans-serif; color:#8a8170; margin-top:2px;">문의 회신 기준</div></div>
+      <div style="display:flex; align-items:center; gap:12px;">
+        <span style="width:26px; height:2px; background:#E37721;"></span>
+        <span style="font:600 12px 'Inter',sans-serif; letter-spacing:.2em; color:#E37721;">PROVEN BY NUMBERS</span>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:22px;">
+        <div class="stat-card" style="background:#fff; border-radius:16px; padding:22px 18px; box-shadow:0 1px 2px rgba(27,58,92,.06), 0 10px 24px rgba(27,58,92,.07);">
+          <div style="font:700 30px 'Pretendard',sans-serif; color:#006935; white-space:nowrap;"><span class="nzp-counter" data-target="260" data-duration="3000">0</span><span style="font-size:17px;">억원</span></div>
+          <div style="font:500 13px 'Pretendard',sans-serif; color:#8a8170; margin-top:6px;">연 매출</div>
+        </div>
+        <div class="stat-card" style="background:#fff; border-radius:16px; padding:22px 18px; box-shadow:0 1px 2px rgba(27,58,92,.06), 0 10px 24px rgba(27,58,92,.07);">
+          <div style="font:700 30px 'Pretendard',sans-serif; color:#006935; white-space:nowrap;"><span class="nzp-counter" data-target="12" data-duration="3000">0</span><span style="font-size:17px;">억원</span></div>
+          <div style="font:500 13px 'Pretendard',sans-serif; color:#8a8170; margin-top:6px;">누적 기부금액</div>
+        </div>
+        <div class="stat-card" style="background:#fff; border-radius:16px; padding:22px 18px; box-shadow:0 1px 2px rgba(27,58,92,.06), 0 10px 24px rgba(27,58,92,.07);">
+          <div style="font:700 30px 'Pretendard',sans-serif; color:#006935; white-space:nowrap;">$<span class="nzp-counter" data-target="10" data-duration="3000">0</span><span style="font-size:17px;">만</span></div>
+          <div style="font:500 13px 'Pretendard',sans-serif; color:#8a8170; margin-top:6px;">해외 수출</div>
+        </div>
       </div>
       <p style="font:400 16px/1.72 'Pretendard',sans-serif; color:#6b6456; max-width:440px; margin:26px 0 0;">PC 및 모바일에서 접속하는 디바이스 환경에 최적으로 대응하는 반응형 웹과, 검증된 공급망으로 안정적인 파트너십을 지원합니다.</p>
     </div>
@@ -348,6 +349,7 @@
 
 </div>
 
+<script src="counter.js" defer></script>
 <script src="instagram-feed.js" defer></script>
 <script src="lead-form.js" defer></script>
 <script src="chatbot.js" defer></script>
