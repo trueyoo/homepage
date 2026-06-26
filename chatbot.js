@@ -14,6 +14,21 @@
   };
 
   let history = [];
+  const sessionId = getOrCreateSessionId();
+
+  function getOrCreateSessionId() {
+    const STORAGE_KEY = 'nzp_chat_session_id';
+    try {
+      let id = localStorage.getItem(STORAGE_KEY);
+      if (!id) {
+        id = `${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
+        localStorage.setItem(STORAGE_KEY, id);
+      }
+      return id;
+    } catch (e) {
+      return `${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
+    }
+  }
   let isLoading = false;
   let panelOpen = false;
   let hasOpenedOnce = false;
@@ -283,7 +298,7 @@
       const res = await fetch(CHAT_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: history }),
+        body: JSON.stringify({ messages: history, sessionId }),
       });
 
       if (!res.ok) throw new Error('서버 응답 오류');

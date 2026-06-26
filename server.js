@@ -5,6 +5,7 @@ const fs = require('fs');
 const path = require('path');
 const { getChatResponse } = require('./lib/chat');
 const { fetchInstagramFeed } = require('./lib/instagram');
+const { saveLead } = require('./lib/leads');
 
 const PORT = process.env.PORT || 3000;
 const ROOT = __dirname;
@@ -53,13 +54,13 @@ function handleChatApi(req, res) {
   });
   req.on('end', async () => {
     try {
-      const { messages } = JSON.parse(body || '{}');
+      const { messages, sessionId } = JSON.parse(body || '{}');
       if (!Array.isArray(messages)) {
         res.writeHead(400, { 'Content-Type': 'application/json; charset=utf-8' });
         res.end(JSON.stringify({ error: 'messages 배열이 필요합니다.' }));
         return;
       }
-      const reply = await getChatResponse(messages);
+      const reply = await getChatResponse(messages, sessionId);
       res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
       res.end(JSON.stringify({ reply }));
     } catch (err) {
@@ -82,6 +83,30 @@ async function handleInstagramApi(req, res) {
   }
 }
 
+function handleLeadApi(req, res) {
+  let body = '';
+  req.on('data', (chunk) => {
+    body += chunk;
+  });
+  req.on('end', async () => {
+    try {
+      const { name, contact, channel, message } = JSON.parse(body || '{}');
+      if (!name || !contact) {
+        res.writeHead(400, { 'Content-Type': 'application/json; charset=utf-8' });
+        res.end(JSON.stringify({ error: '이름과 연락처는 필수입니다.' }));
+        return;
+      }
+      await saveLead({ name, contact, channel, message });
+      res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
+      res.end(JSON.stringify({ ok: true }));
+    } catch (err) {
+      console.error('리드 저장 오류:', err);
+      res.writeHead(500, { 'Content-Type': 'application/json; charset=utf-8' });
+      res.end(JSON.stringify({ error: err.message || '상담 신청 저장 중 오류가 발생했습니다.' }));
+    }
+  });
+}
+
 const server = http.createServer((req, res) => {
   if (req.method === 'POST' && req.url === '/api/chat') {
     handleChatApi(req, res);
@@ -89,6 +114,10 @@ const server = http.createServer((req, res) => {
   }
   if (req.method === 'GET' && req.url === '/api/instagram') {
     handleInstagramApi(req, res);
+    return;
+  }
+  if (req.method === 'POST' && req.url === '/api/lead') {
+    handleLeadApi(req, res);
     return;
   }
   serveStatic(req, res);

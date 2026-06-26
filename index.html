@@ -56,7 +56,42 @@
 
 <div style="background:#F5F0E8; font-family:'Pretendard','Inter',sans-serif; color:#1B3A5C; overflow-x:hidden;">
 
-  <!-- NAV -->
+  <!-- VIDEO HERO BANNER -->
+  <section style="position:relative; height:88vh; min-height:560px; max-height:880px; overflow:hidden; color:#fff;">
+    <video autoplay muted loop playsinline preload="metadata" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0;">
+      <source src="assets/main%20video.mp4" type="video/mp4">
+    </video>
+    <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(13,28,46,.45) 0%, rgba(13,28,46,.15) 38%, rgba(13,28,46,.72) 100%); z-index:1;"></div>
+
+    <!-- overlay nav -->
+    <div style="position:absolute; top:0; left:0; right:0; z-index:2;">
+      <div style="max-width:1180px; margin:0 auto; padding:24px 40px; display:flex; align-items:center; justify-content:space-between;">
+        <img src="assets/brand/%EB%84%88%EC%A6%90%ED%8D%BC%EC%A6%90_2%EC%A4%84_%EC%BB%AC%EB%9F%AC.png" alt="Nuzzle Puzzle 너즐퍼즐" style="height:42px; width:auto; display:block; filter:brightness(0) invert(1);">
+        <nav style="display:flex; align-items:center; gap:34px;">
+          <a href="#brand" style="font:500 15px 'Pretendard',sans-serif; color:rgba(255,255,255,.88); text-decoration:none;">브랜드</a>
+          <a href="#products" style="font:500 15px 'Pretendard',sans-serif; color:rgba(255,255,255,.88); text-decoration:none;">제품</a>
+          <a href="#partnership" style="font:500 15px 'Pretendard',sans-serif; color:rgba(255,255,255,.88); text-decoration:none;">파트너십</a>
+          <a href="#contact" style="display:inline-flex; align-items:center; background:#E37721; color:#fff; font:600 14px 'Pretendard',sans-serif; padding:11px 22px; border-radius:50px; text-decoration:none;">파트너십 문의</a>
+        </nav>
+      </div>
+    </div>
+
+    <!-- headline -->
+    <div style="position:absolute; left:0; right:0; bottom:0; z-index:2; max-width:1180px; margin:0 auto; padding:0 40px 86px;">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <span style="width:26px; height:2px; background:#E37721;"></span>
+        <span style="font:600 12px 'Inter',sans-serif; letter-spacing:.2em; color:#E89B5E;">B2B PREMIUM PET NUTRITION</span>
+      </div>
+      <h1 style="font:700 60px/1.12 'Pretendard',sans-serif; letter-spacing:-.03em; color:#fff; margin:22px 0 0;">반려동물의 하루가<br>달라집니다</h1>
+      <p style="font:400 18px/1.72 'Pretendard',sans-serif; color:rgba(255,255,255,.82); max-width:460px; margin:22px 0 0;">수의영양학과 식품과학에 근거한 프리미엄 사료·간식·펫워터를, 반려동물 전문 기관에 맞춤 공급합니다.</p>
+      <div style="display:flex; gap:13px; margin-top:34px;">
+        <a href="#contact" class="btn-primary" style="display:inline-flex; align-items:center; background:#006935; color:#fff; font:600 15px 'Pretendard',sans-serif; padding:15px 30px; border-radius:50px; text-decoration:none;">파트너십 문의</a>
+        <a href="#products" style="display:inline-flex; align-items:center; background:rgba(255,255,255,.08); color:#fff; font:600 15px 'Pretendard',sans-serif; padding:15px 30px; border-radius:50px; border:1px solid rgba(255,255,255,.42); text-decoration:none;">제품 라인업 보기</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- NAV (sticky on scroll) -->
   <header style="position:sticky; top:0; z-index:20; background:rgba(245,240,232,.88); backdrop-filter:blur(10px); border-bottom:1px solid rgba(27,58,92,.10);">
     <div style="max-width:1180px; margin:0 auto; padding:15px 40px; display:flex; align-items:center; justify-content:space-between;">
       <img src="assets/brand/%EB%84%88%EC%A6%90%ED%8D%BC%EC%A6%90_2%EC%A4%84_%EC%BB%AC%EB%9F%AC.png" alt="Nuzzle Puzzle 너즐퍼즐" style="height:46px; width:auto; display:block;">
@@ -69,26 +104,17 @@
     </div>
   </header>
 
-  <!-- HERO -->
-  <section style="max-width:1180px; margin:0 auto; padding:84px 40px 92px; display:flex; gap:56px; align-items:center;">
+  <!-- HERO STATS + PRODUCT VIDEO -->
+  <section style="max-width:1180px; margin:0 auto; padding:64px 40px 80px; display:flex; gap:56px; align-items:center;">
     <div style="flex:1.05;">
-      <div style="display:flex; align-items:center; gap:12px;">
-        <span style="width:26px; height:2px; background:#E37721;"></span>
-        <span style="font:600 12px 'Inter',sans-serif; letter-spacing:.2em; color:#E37721;">B2B PREMIUM PET NUTRITION</span>
-      </div>
-      <h1 style="font:700 54px/1.12 'Pretendard',sans-serif; letter-spacing:-.03em; color:#1B3A5C; margin:22px 0 0;">반려동물의 하루가<br>달라집니다</h1>
-      <p style="font:400 18px/1.72 'Pretendard',sans-serif; color:#6b6456; max-width:440px; margin:24px 0 0;">수의영양학과 식품과학에 근거한 프리미엄 사료·간식·펫워터를, 반려동물 전문 기관에 맞춤 공급합니다.</p>
-      <div style="display:flex; gap:13px; margin-top:36px;">
-        <a href="#contact" class="btn-primary" style="display:inline-flex; align-items:center; background:#006935; color:#fff; font:600 15px 'Pretendard',sans-serif; padding:15px 30px; border-radius:50px; text-decoration:none;">파트너십 문의</a>
-        <a href="#products" class="btn-secondary" style="display:inline-flex; align-items:center; background:transparent; color:#1B3A5C; font:600 15px 'Pretendard',sans-serif; padding:15px 30px; border-radius:50px; border:1px solid rgba(27,58,92,.28); text-decoration:none;">제품 라인업 보기</a>
-      </div>
-      <div style="display:flex; gap:30px; margin-top:46px;">
+      <div style="display:flex; gap:30px;">
         <div><div style="font:700 26px 'Pretendard',sans-serif; color:#006935;">3</div><div style="font:500 13px 'Pretendard',sans-serif; color:#8a8170; margin-top:2px;">핵심 제품 카테고리</div></div>
         <div style="width:1px; background:rgba(27,58,92,.12);"></div>
         <div><div style="font:700 26px 'Pretendard',sans-serif; color:#006935;">5</div><div style="font:500 13px 'Pretendard',sans-serif; color:#8a8170; margin-top:2px;">전문 공급 채널</div></div>
         <div style="width:1px; background:rgba(27,58,92,.12);"></div>
         <div><div style="font:700 26px 'Pretendard',sans-serif; color:#006935;">24<span style="font-size:15px;">h</span></div><div style="font:500 13px 'Pretendard',sans-serif; color:#8a8170; margin-top:2px;">문의 회신 기준</div></div>
       </div>
+      <p style="font:400 16px/1.72 'Pretendard',sans-serif; color:#6b6456; max-width:440px; margin:26px 0 0;">PC 및 모바일에서 접속하는 디바이스 환경에 최적으로 대응하는 반응형 웹과, 검증된 공급망으로 안정적인 파트너십을 지원합니다.</p>
     </div>
     <div style="flex:1.25; display:flex; justify-content:center;">
       <div class="hero-img-frame" style="width:300px; height:534px; border-radius:20px; overflow:hidden; box-shadow:0 16px 40px rgba(40,34,22,.14); position:relative;">
@@ -279,6 +305,30 @@
           <span style="font:500 14px 'Inter',sans-serif; color:rgba(245,240,232,.7);">b2b@nuzzlepuzzle.co.kr</span>
         </div>
       </div>
+      <div id="nzp-lead-wrap" style="padding:44px 0 50px; border-bottom:1px solid rgba(245,240,232,.16);">
+        <h3 style="font:700 18px 'Pretendard',sans-serif; color:#F5F0E8; margin:0 0 18px;">무료 상담 신청</h3>
+        <form id="nzp-lead-form" style="display:grid; grid-template-columns:repeat(2,1fr); gap:12px;">
+          <input id="nzp-lead-name" name="name" type="text" placeholder="이름 / 업체명 *" required
+            style="grid-column:1; padding:13px 16px; border-radius:10px; border:1px solid rgba(245,240,232,.22); background:rgba(245,240,232,.06); color:#F5F0E8; font:400 14px 'Pretendard',sans-serif; outline:none;">
+          <input id="nzp-lead-contact" name="contact" type="text" placeholder="연락처(전화/이메일) *" required
+            style="grid-column:2; padding:13px 16px; border-radius:10px; border:1px solid rgba(245,240,232,.22); background:rgba(245,240,232,.06); color:#F5F0E8; font:400 14px 'Pretendard',sans-serif; outline:none;">
+          <select id="nzp-lead-channel" name="channel"
+            style="grid-column:1 / span 2; padding:13px 16px; border-radius:10px; border:1px solid rgba(245,240,232,.22); background:rgba(245,240,232,.06); color:#F5F0E8; font:400 14px 'Pretendard',sans-serif; outline:none;">
+            <option value="" style="color:#1B3A5C;">소속(선택)</option>
+            <option value="동물병원" style="color:#1B3A5C;">동물병원</option>
+            <option value="반려동물 용품샵" style="color:#1B3A5C;">반려동물 용품샵</option>
+            <option value="펫 미용실" style="color:#1B3A5C;">펫 미용실</option>
+            <option value="펫 호텔" style="color:#1B3A5C;">펫 호텔</option>
+            <option value="펫 유치원" style="color:#1B3A5C;">펫 유치원</option>
+            <option value="기타" style="color:#1B3A5C;">기타</option>
+          </select>
+          <textarea id="nzp-lead-message" name="message" placeholder="문의 내용(선택)" rows="3"
+            style="grid-column:1 / span 2; padding:13px 16px; border-radius:10px; border:1px solid rgba(245,240,232,.22); background:rgba(245,240,232,.06); color:#F5F0E8; font:400 14px 'Pretendard',sans-serif; outline:none; resize:vertical;"></textarea>
+          <button id="nzp-lead-submit" type="submit"
+            style="grid-column:1 / span 2; justify-self:start; background:#E37721; color:#fff; font:600 15px 'Pretendard',sans-serif; padding:14px 32px; border:none; border-radius:50px; cursor:pointer;">상담 신청하기</button>
+          <div id="nzp-lead-status" style="grid-column:1 / span 2; font:400 13px 'Pretendard',sans-serif; min-height:18px;"></div>
+        </form>
+      </div>
       <div style="display:flex; align-items:flex-end; justify-content:space-between; padding-top:34px;">
         <div>
           <div style="font:700 19px 'Pretendard',sans-serif; color:#F5F0E8; letter-spacing:-.01em;">Nuzzle <span style="color:#E89B5E;">Puzzle</span></div>
@@ -299,6 +349,7 @@
 </div>
 
 <script src="instagram-feed.js" defer></script>
+<script src="lead-form.js" defer></script>
 <script src="chatbot.js" defer></script>
 </body>
 </html>
