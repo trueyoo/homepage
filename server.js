@@ -4,6 +4,7 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const { getChatResponse } = require('./lib/chat');
+const { fetchInstagramFeed } = require('./lib/instagram');
 
 const PORT = process.env.PORT || 3000;
 const ROOT = __dirname;
@@ -69,9 +70,25 @@ function handleChatApi(req, res) {
   });
 }
 
+async function handleInstagramApi(req, res) {
+  try {
+    const items = await fetchInstagramFeed();
+    res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
+    res.end(JSON.stringify({ items }));
+  } catch (err) {
+    console.error('인스타그램 피드 조회 오류:', err);
+    res.writeHead(500, { 'Content-Type': 'application/json; charset=utf-8' });
+    res.end(JSON.stringify({ error: '인스타그램 피드를 불러오지 못했습니다.' }));
+  }
+}
+
 const server = http.createServer((req, res) => {
   if (req.method === 'POST' && req.url === '/api/chat') {
     handleChatApi(req, res);
+    return;
+  }
+  if (req.method === 'GET' && req.url === '/api/instagram') {
+    handleInstagramApi(req, res);
     return;
   }
   serveStatic(req, res);
