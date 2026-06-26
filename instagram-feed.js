@@ -10,7 +10,20 @@
       <circle cx="16" cy="8" r="1" fill="#fff"/>
     </svg>`;
 
-  function renderCards(items) {
+  const PROFILE_URL = 'https://www.instagram.com/nuzzle.puzzle/';
+  const FALLBACK_IMAGES = [
+    'assets/main%20image.png',
+    'assets/premium%20dog%20food.png',
+    'assets/cat%20churo.png',
+    'assets/pet%20water.png',
+  ];
+  // 실제 토큰 연동 전까지 보여주는 임시 샘플 (연동되면 loadFeed가 실제 데이터로 대체)
+  const FALLBACK_ITEMS = Array.from({ length: 12 }, (_, i) => ({
+    permalink: PROFILE_URL,
+    imageUrl: FALLBACK_IMAGES[i % FALLBACK_IMAGES.length],
+  }));
+
+  function renderCards(items, isFallback) {
     const track = document.getElementById('nzp-ig-track');
     if (!track) return;
 
@@ -28,6 +41,14 @@
         </a>`
       )
       .join('');
+
+    if (isFallback) {
+      const notice = document.createElement('div');
+      notice.className = 'nzp-ig-fallback-notice';
+      notice.style.cssText = 'font:400 11px Pretendard,sans-serif; color:#a99d85; margin-top:8px;';
+      notice.textContent = '* 실제 연동 전 임시 이미지입니다. 인스타그램 연동이 완료되면 최신 게시물로 자동 교체됩니다.';
+      track.insertAdjacentElement('afterend', notice);
+    }
   }
 
   function setupArrow() {
@@ -56,10 +77,10 @@
     try {
       const res = await fetch(ENDPOINT);
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error || '요청 실패');
-      renderCards(data.items || []);
+      if (!res.ok || !data.items || data.items.length === 0) throw new Error(data.error || '데이터 없음');
+      renderCards(data.items, false);
     } catch (err) {
-      renderCards([]);
+      renderCards(FALLBACK_ITEMS, true);
     }
     setupArrow();
   }
